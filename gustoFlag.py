@@ -2,10 +2,10 @@
 # GustoObsFlag
 ###########
 import numpy as np
-from flags import Flags
+from enum import IntFlag
 
 
-class GustoSeqFlag(Flags):
+class GustoSeqFlag:
     """
     Define flags which reflect the quality or processing of an observation.  Observations refer to a
     calibratable set of integrations (for example a full OTF scan including the HOTs and REFs)
@@ -19,36 +19,34 @@ class GustoSeqFlag(Flags):
     processed_flag = processed_level |
 
     """
-    incomplete = 1, 'incomplete_obs'
-    lavel_1a = 4, 'level_1a_processed'
-    level_1b = 8, 'level_1b_processed'
-    level_1c = 16, 'level_1c_processed'
-    badbaselines = 32, 'baseline_issues'
+    incomplete = IntFlag(1) #, 'incomplete_obs'
+    level_1a = IntFlag(2)  # 'level_1a_processed'
+    level_1b = IntFlag(4)   # 'level_1b_processed'
+    level_1c = IntFlag(8) #  'level_1c_processed'
+    badbaselines = IntFlag(16) # 'baseline_issues'
 
-
-
-class GustoBbFlag(Flags):
-    """
-    Define flags reflecting the quality of an individual integration of a building block type .  This could
-    be for example the quality of a "HOT" integration.
-    """
-    corrupt = 1, 'corrupt_data'
-    problem = 2, 'unknown_problem'
-    ignore = 4, 'ígnore_bb'
-
-
-class GustoMixerFlag(Flags):
-    """
-    Define Flags which impact an individual mixer in the array.
-    """
-    underpumped   = 1, 'mixer_underpumped'
-    flag2         = 2, 'TBD'
-
-class GustoChannelFlag(Flags):
+class GustoBbtypeFlag:
     """
     Define Flags which impact individual spectrometer channels, can appear at any channel of any integration
     """
-    spike         = 1, 'spike'
-    data_ool      = 2, 'out_of_limit'
-    possible_line = 4, 'potential_line'
-    bad_channel   = 8, 'unknown_problem'
+    corrupt = IntFlag(1) #
+    problem = IntFlag(2) #
+    ignore = IntFlag(4) #
+
+
+class GustoMixerFlag:
+    """
+    Define Flags which impact individual spectrometer channels, can appear at any channel of any integration
+    """
+    underpumped = IntFlag(1)  #
+    problem = IntFlag(2)  #
+
+
+class GustoChannelFlag:
+    """
+    Define Flags which impact individual spectrometer channels, can appear at any channel of any integration
+    """
+    spike = IntFlag(1) #, 'spike'
+    data_ool = IntFlag(2) #, 'out_of_limit'
+    possible_line = IntFlag(4) #, 'potential_line'
+    bad_channel = IntFlag(8) #, 'unknown_problem'
