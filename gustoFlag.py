@@ -25,26 +25,33 @@ class GustoSeqFlag:
     level_1c = IntFlag(8) #  'level_1c_processed'
     badbaselines = IntFlag(16) # 'baseline_issues'
 
+
 class GustoBbtypeFlag:
     """
-    Define Flags which impact individual spectrometer channels, can appear at any channel of any integration
+
+    Define Flags which impact entire integrations
+
     """
-    corrupt = IntFlag(1) #
-    problem = IntFlag(2) #
-    ignore = IntFlag(4) #
+    corrupt = IntFlag(1) 
+    problem = IntFlag(2) 
+    ignore = IntFlag(4) 
 
 
 class GustoMixerFlag:
     """
-    Define Flags which impact individual spectrometer channels, can appear at any channel of any integration
+
+    Define Flags which impact individual mixers
+
     """
-    underpumped = IntFlag(1)  #
-    problem = IntFlag(2)  #
+    underpumped = IntFlag(1)  
+    problem = IntFlag(2)  
 
 
 class GustoChannelFlag:
     """
+
     Define Flags which impact individual spectrometer channels, can appear at any channel of any integration
+
     """
     spike = IntFlag(1) #, 'spike'
     data_ool = IntFlag(2) #, 'out_of_limit'
