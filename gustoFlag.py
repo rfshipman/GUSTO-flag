@@ -1,11 +1,10 @@
 ###########
 # GustoObsFlag
 ###########
-import numpy as np
 from enum import IntFlag
 
 
-class GustoSeqFlag:
+class GustoSeqFlag(IntFlag):
     """
     Define flags which reflect the quality or processing of an observation.  Observations refer to a
     calibratable set of integrations (for example a full OTF scan including the HOTs and REFs)
@@ -26,7 +25,7 @@ class GustoSeqFlag:
     badbaselines = IntFlag(16) # 'baseline_issues'
 
 
-class GustoBbtypeFlag:
+class GustoBbtypeFlag(IntFlag):
     """
 
     Define Flags which impact entire integrations
@@ -37,7 +36,7 @@ class GustoBbtypeFlag:
     ignore = IntFlag(4) 
 
 
-class GustoMixerFlag:
+class GustoMixerFlag(IntFlag):
     """
 
     Define Flags which impact individual mixers
@@ -47,7 +46,7 @@ class GustoMixerFlag:
     problem = IntFlag(2)  
 
 
-class GustoChannelFlag:
+class GustoChannelFlag(IntFlag):
     """
 
     Define Flags which impact individual spectrometer channels, can appear at any channel of any integration
