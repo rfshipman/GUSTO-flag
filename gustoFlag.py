@@ -6,7 +6,7 @@ from enum import IntFlag
 
 class GustoSeqFlag(IntFlag):
     """
-    Define flags which reflect the quality or processing of an observation.  Observations refer to a
+    Define flags which reflect the quality or processing of an observation (sequence of bbtypes).  Observations refer to a
     calibratable set of integrations (for example a full OTF scan including the HOTs and REFs)
 
     usage:
@@ -18,22 +18,22 @@ class GustoSeqFlag(IntFlag):
     processed_flag = processed_level |
 
     """
-    incomplete = IntFlag(1) #, 'incomplete_obs'
-    level_1a = IntFlag(2)  # 'level_1a_processed'
-    level_1b = IntFlag(4)   # 'level_1b_processed'
-    level_1c = IntFlag(8) #  'level_1c_processed'
-    badbaselines = IntFlag(16) # 'baseline_issues'
+    INCOMPLETE = IntFlag(1) #, 'incomplete_obs'
+    LEVEL_1A = IntFlag(2)  # 'level_1a_processed'
+    LEVEL_1B = IntFlag(4)   # 'level_1b_processed'
+    LEVEL_1C = IntFlag(8) #  'level_1c_processed'
+    BADBASELINE = IntFlag(16) # 'baseline_issues'
 
 
 class GustoBbtypeFlag(IntFlag):
     """
 
-    Define Flags which impact entire integrations
+    Define Flags which impact an integration or bbtype
 
     """
-    corrupt = IntFlag(1) 
-    problem = IntFlag(2) 
-    ignore = IntFlag(4) 
+    CORRUPT = IntFlag(1) # corrupted data
+    FLIPMIRROR = IntFlag(2) # mirror not settled
+    IGNORE = IntFlag(4) # don't use itegration in further processing
 
 
 class GustoMixerFlag(IntFlag):
@@ -42,8 +42,8 @@ class GustoMixerFlag(IntFlag):
     Define Flags which impact individual mixers
 
     """
-    underpumped = IntFlag(1)  
-    problem = IntFlag(2)  
+    UNDERPUMPTED = IntFlag(1)
+    PROBLEM = IntFlag(2)
 
 
 class GustoChannelFlag(IntFlag):
@@ -52,7 +52,7 @@ class GustoChannelFlag(IntFlag):
     Define Flags which impact individual spectrometer channels, can appear at any channel of any integration
 
     """
-    spike = IntFlag(1) #, 'spike'
-    data_ool = IntFlag(2) #, 'out_of_limit'
-    possible_line = IntFlag(4) #, 'potential_line'
-    bad_channel = IntFlag(8) #, 'unknown_problem'
+    SPIKE = IntFlag(1) #, 'spike'
+    DATA_OOL = IntFlag(2) #, 'out_of_limit'
+    POSSIBLE_LINE = IntFlag(4) #, 'potential_line'
+    BAD_CHANNEL = IntFlag(8) #, 'unknown_problem'
